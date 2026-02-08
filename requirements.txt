@@ -1,0 +1,24 @@
+# Core
+web3==6.0.0
+eth-account==0.9.0
+hexbytes==0.3.0
+
+# Async
+aiohttp==3.8.5
+asyncio==3.4.3
+
+# Configuration
+pyyaml==6.0
+python-dotenv==1.0.0
+
+# Monitoring
+prometheus-client==0.17.1
+requests==2.31.0
+
+# Data
+pandas==2.0.3
+numpy==1.24.3
+
+# Utils
+colorlog==6.7.0
+python-dateutil==2.8.2
