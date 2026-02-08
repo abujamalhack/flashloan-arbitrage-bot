@@ -1,0 +1,96 @@
+# إعدادات شبكة Polygon
+rpc:
+  mainnet: "https://polygon-rpc.com"
+  private: "https://polygon-private-rpc.example.com"  # Private RPC
+
+# المفاتيح الخاصة
+keys:
+  owner: "0x..."      # مفتاح المالك (للتوقيع)
+  executor: "0x..."   # مفتاح المنفذ (للغاز)
+
+# العقد الذكية
+contracts:
+  flashloan_arbitrage: "0x..."  # عنوان العقد بعد النشر
+  abi_path: "FlashLoanArbitrage.json"
+
+# إعدادات التداول
+trading:
+  min_profit: 1000000000000000      # 0.001 MATIC
+  max_slippage: 30                  # 0.3%
+  check_interval: 0.05              # 50ms
+  min_price_diff: 0.005             # 0.5% فرق سعر أدنى
+  default_trade_size: 1000000000000000000  # 1 MATIC
+  dex_fee_percent: 0.003            # 0.3% رسوم DEX
+  min_executor_balance: 100000000000000000  # 0.1 MATIC
+  
+  # الرواتر المفعلة
+  enabled_routers:
+    - "0xa5E0829CaCEd8fFDD4De3c43696c57F7D7A678ff"  # QuickSwap
+    - "0x1b02dA8Cb0d097eB8D57A175b88c7D8b47997506"  # SushiSwap
+    - "0xC0788A3aD43d79aa53B09c2EaCc313A787d1d607"  # ApeSwap
+    - "0xE592427A0AEce92De3Edee1F18E0157C05861564"  # Uniswap V3
+  
+  # أزواج التداول
+  pairs:
+    - base: "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174"  # USDC
+      quote: "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619"   # WETH
+      decimals: 18
+    
+    - base: "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270"  # WMATIC
+      quote: "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619"   # WETH
+      decimals: 18
+    
+    - base: "0x8f3Cf7ad23Cd3CaDbD9735AFf958023239c6A063"  # DAI
+      quote: "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174"  # USDC
+      decimals: 18
+
+# حماية MEV
+mev_protection:
+  enabled: true
+  use_private_tx: true
+  max_gas_price_absolute: 500000000000  # 500 Gwei
+  tx_timeout: 120                       # 120 ثانية
+  
+# التنفيذ
+execution:
+  use_private_tx: true
+  max_retries: 3
+  retry_delay: 1.0                      # 1 ثانية
+  
+# الإنذارات
+alerts:
+  enabled: true
+  high_profit_threshold: 5000000000000000000  # 5 MATIC
+  
+  telegram:
+    enabled: false
+    token: "YOUR_TELEGRAM_BOT_TOKEN"
+    chat_id: "YOUR_CHAT_ID"
+  
+  discord:
+    enabled: false
+    webhook_url: "YOUR_DISCORD_WEBHOOK_URL"
+  
+  email:
+    enabled: false
+    smtp_server: "smtp.gmail.com"
+    smtp_port: 587
+    sender: "your-email@gmail.com"
+    password: "your-password"
+    recipients:
+      - "alert1@email.com"
+      - "alert2@email.com"
+
+# المراقبة
+monitoring:
+  metrics_port: 8000
+  dashboard_port: 8080
+  health_check_interval: 60            # 60 ثانية
+  save_state_interval: 300             # 5 دقائق
+
+# السجلات
+logging:
+  level: "INFO"
+  file: "logs/bot.log"
+  max_size: 10485760                   # 10 MB
+  backup_count: 5
